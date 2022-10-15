@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="banners">
+        <item>@drawable/banner1</item>
+        <item>@drawable/banner2</item>
+    </integer-array>
+</resources>

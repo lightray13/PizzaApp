@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/anim.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/drawable/baseline_refresh.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/drawable/bottom_navigation_selector.xml" value="0.17552083333333332" />
+        <entry key="app/src/main/res/drawable/ic_image.xml" value="0.17552083333333332" />
+        <entry key="app/src/main/res/drawable/ic_menu.xml" value="0.22407407407407406" />
+        <entry key="app/src/main/res/drawable/ic_shopping_cart.xml" value="0.22407407407407406" />
+        <entry key="app/src/main/res/drawable/line_between_pizza_items.xml" value="0.17552083333333332" />
+        <entry key="app/src/main/res/drawable/pizza_item_price_text_view.xml" value="0.17552083333333332" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.13804457953394123" />
+        <entry key="app/src/main/res/layout/banner_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_pizza_list.xml" value="0.14488348530901723" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_shopping_cart.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/pizza_list_item.xml" value="0.2400144102358262" />
+        <entry key="app/src/main/res/layout/pizza_menu_item.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/main_bottom_menu.xml" value="0.19814814814814816" />
+        <entry key="app/src/main/res/menu/pizza_list_menu.xml" value="0.159375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

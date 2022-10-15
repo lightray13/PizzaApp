@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.pizza.application.ui.main.menu.PizzaListViewModel"/>
+    </data>
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/chooseCityMaterialSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:ms_background_color="@color/grey"
+            app:ms_text_color="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/menuItemQrcodeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_qrcode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/chooseCityMaterialSpinner"
+            app:layout_constraintBottom_toBottomOf="@id/chooseCityMaterialSpinner"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.menu.PizzaListFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="0dp"
+            android:fitsSystemWindows="true">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/bannerListRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grey"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/menuItemsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pizzaListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/pizzasListLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintTop_toBottomOf="@id/menuItemsRecyclerView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/pizzaListErrorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:text="@string/pizza_list_error"
+            android:textColor="@color/dark_grey"
+            android:textSize="18sp"
+            android:visibility="gone"
+            android:drawablePadding="5dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:onClick="@{(view) -> viewModel.loadPizzasFromApi()}"
+            app:layout_constraintTop_toBottomOf="@id/menuItemsRecyclerView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:drawableBottomCompat="@drawable/baseline_refresh" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</LinearLayout>
+</layout>
+
+
+
+
+
+
+
+
+
+
+
+    <!--<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="#FF03DAC5"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    tools:context=".ui.main.menu.PizzaListFragment">-->
+<!--    -->
+<!--    -->
+
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fitsSystemWindows="true">-->
+
+<!--&lt;!&ndash;                        <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:layout_width="100dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:layout_height="100dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:src="@drawable/ic_launcher_background"/>&ndash;&gt;-->
+
+<!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
+<!--            android:id="@+id/collapsingToolbarLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:layout_scrollFlags="scroll|exitUntilCollapsed">-->
+
+<!--&lt;!&ndash;            <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:orientation="vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:layout_collapseParallaxMultiplier="@integer/material_motion_duration_long_1"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:layout_collapseMode="none">&ndash;&gt;-->
+<!--&lt;!&ndash;                <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="100dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="100dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:src="@drawable/ic_launcher_background"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="100dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="100dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:src="@drawable/ic_launcher_background"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            </LinearLayout>&ndash;&gt;-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="?attr/actionBarSize"-->
+<!--                android:orientation="vertical"-->
+<!--                app:layout_collapseMode="pin">-->
+<!--                <ImageView-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:src="@drawable/ic_launcher_background"/>-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:src="@drawable/ic_launcher_background"/>-->
+<!--            </LinearLayout>-->
+
+<!--            <androidx.appcompat.widget.Toolbar-->
+<!--                android:id="@+id/toolbar"-->
+<!--                android:layout_width="match_parent"-->
+<!--                app:subtitle="dsasdlsamd"-->
+<!--                app:title="dsadsadsad"-->
+<!--                android:layout_height="?attr/actionBarSize"-->
+<!--                app:backgroundTint="@color/white">-->
+<!--                <ImageView-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:src="@drawable/ic_profile"/>-->
+<!--            </androidx.appcompat.widget.Toolbar>-->
+
+<!--&lt;!&ndash;            <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_marginTop="?attr/actionBarSize"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:orientation="vertical">&ndash;&gt;-->
+<!--&lt;!&ndash;                <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="100dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="100dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:src="@drawable/ic_launcher_background"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="100dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="100dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:src="@drawable/ic_launcher_background"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            </LinearLayout>&ndash;&gt;-->
+
+<!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="sdjkasldjlasd"-->
+<!--        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>-->
+
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_profile"-->
+<!--            android:text="Examples-->
+
+<!--See the examples directory for simple apps and demonstrations on using the basic functionality.-->
+
+<!--Testing-->
+
+<!--For testing we have started using the extremely light vanilla-test testing suite. It is a pretty bare bones testing framework, but it works really well and simply with native ES6 and ESM. vanilla-test on npm-->
+
+<!--Simply run ` npm test `-->
+
+<!--This will setup everything that is needed to run the tests, install the modules required and run the tests for you.-->
+
+<!--Remember, the Dominos API is rate limited, so if you make too many requests, like running tests back to back too many times, you may need to wait a short while before making new requests.-->
+
+<!--Code Coverage-->
+
+<!--For coverage we are using the amazing c8 coverage suite. It produces awesom instanbul style reports as well as lcov and much mmore. It allows testing of pure ES6 code without transpiling, and does not modify the code at all for coverage. It uses the built in node coverage tools to test the execution directly inside v8 c8 on npm-->
+
+<!--Simply run ` npm test ` and the coverage files will be added to the ./coverage directory automatically. You can start a local coverage server to view your results by running npm run coverage. This will start a simple node-http-server for your local coverage directory.-->
+
+<!--See the public c8   vanilla-test code coverage-->
+
+<!--TLDR; Order   Track a Pizza-->
+<!--Examples-->
+
+<!--See the examples directory for simple apps and demonstrations on using the basic functionality.-->
+
+<!--Testing-->
+
+<!--For testing we have started using the extremely light vanilla-test testing suite. It is a pretty bare bones testing framework, but it works really well and simply with native ES6 and ESM. vanilla-test on npm-->
+
+<!--Simply run ` npm test `-->
+
+<!--This will setup everything that is needed to run the tests, install the modules required and run the tests for you.-->
+
+<!--Remember, the Dominos API is rate limited, so if you make too many requests, like running tests back to back too many times, you may need to wait a short while before making new requests.-->
+
+<!--Code Coverage-->
+
+<!--For coverage we are using the amazing c8 coverage suite. It produces awesom instanbul style reports as well as lcov and much mmore. It allows testing of pure ES6 code without transpiling, and does not modify the code at all for coverage. It uses the built in node coverage tools to test the execution directly inside v8 c8 on npm-->
+
+<!--Simply run ` npm test ` and the coverage files will be added to the ./coverage directory automatically. You can start a local coverage server to view your results by running npm run coverage. This will start a simple node-http-server for your local coverage directory.-->
+
+<!--See the public c8   vanilla-test code coverage-->
+
+<!--TLDR; Order   Track a Pizza"/>-->
+<!--    </androidx.core.widget.NestedScrollView>-->
+
+
+<!--&lt;!&ndash;    <com.google.android.material.appbar.CollapsingToolbarLayout>&ndash;&gt;-->
+<!--&lt;!&ndash;        <com.google.android.material.appbar.AppBarLayout&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/appBarLayout"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="wrap_content">&ndash;&gt;-->
+<!--&lt;!&ndash;            <com.google.android.material.appbar.MaterialToolbar&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/toolbar"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="?attr/actionBarSize"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:layout_scrollFlags="scroll|enterAlways"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:title="@string/app_name" >&ndash;&gt;-->
+<!--&lt;!&ndash;            </com.google.android.material.appbar.MaterialToolbar>&ndash;&gt;-->
+<!--&lt;!&ndash;        </com.google.android.material.appbar.AppBarLayout>&ndash;&gt;-->
+<!--&lt;!&ndash;        <androidx.recyclerview.widget.RecyclerView&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/recyclerView"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:background="#F5F8FD"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:orientation="vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:padding="5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:layout_behavior="@string/appbar_scrolling_view_behavior" />&ndash;&gt;-->
+<!--&lt;!&ndash;    </com.google.android.material.appbar.CollapsingToolbarLayout>&ndash;&gt;-->
+
+<!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->
